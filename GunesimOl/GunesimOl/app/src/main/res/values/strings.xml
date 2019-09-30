@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Güneşim Ol</string>
+    <string name="title_home">Anasayfa</string>
+    <string name="title_pecs">Pecs İletişim Sistemi</string>
+    <string name="title_socialstory">Sosyal Öykü</string>
+    <string name="title_diet">Diyet Programı</string>
+    <string name="title_video">Beceri Video Havuzu</string>
+    <string name="login_email">Email Adresinizi Giriniz</string>
+    <string name="login_sifre">Şifrenizi Giriniz</string>
+    <string name="social_story_form_q1">Öykünüz ne, nerede, nasıl, neden, ne zaman, kim sorularına yanıt veriyor mu?</string>
+    <string name="social_story_form_q2">Öyküde olumlu cümleler kullandınız mı?</string>
+    <string name="social_story_form_q3">Dört temel cümle çeşidine yer verdiniz mi?(betimleyici, yansıtıcı, doğrulayıcı, yönlendirici cümle)</string>
+    <string name="social_story_form_q4">Cümle oranlarına dikkat ettiniz mi??</string>
+    <string name="social_story_form_q5">Öykünüzü çoçuğunuz bakış açısından ve ağzından yazdınız mı?(örn: "oyuncaklarımı kardeşimle paylaşırsam annem çok sevinir.")</string>
+    <string name="social_story_form_q6">Öykünüz çocuğunuzun anlayacağı açıklıkta yazılmış mı?</string>
+    <string name="social_story_form_q7">Öykünüzün anlaşılması için görsel olarak kullandığınız resim vb.nin öykünüzün içeriğine uygun mu?</string>
+    <string name="social_story_form_q8">Öykünüzde verilen örnekler çocuğunuzun gelişim düzeyine uygun mu?</string>
+</resources>

@@ -2,14 +2,10 @@ package com.example.gunesimol;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -19,7 +15,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class login extends AppCompatActivity {
+public class Login extends AppCompatActivity {
     private Button btn_login,btn_register;
     private EditText edtt_email, edtt_password;
     private FirebaseAuth mAuth;
@@ -29,6 +25,7 @@ public class login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setTitle("Giriş");
         setContentView(R.layout.login);
         FirebaseApp.initializeApp(this);
         mAuth = FirebaseAuth.getInstance();
@@ -39,7 +36,7 @@ public class login extends AppCompatActivity {
         edtt_password= (EditText) findViewById(R.id.edtt_password);
         if(firebaseUser != null){ // check user session
 
-            Intent i = new Intent(login.this,MainActivity.class);
+            Intent i = new Intent(Login.this,MainActivity.class);
             startActivity(i);
             finish();
         }
@@ -64,7 +61,7 @@ public class login extends AppCompatActivity {
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               Intent intent=new Intent(login.this, register.class);
+               Intent intent=new Intent(Login.this, Register.class);
                startActivity(intent);
                finish();
             }
@@ -73,12 +70,12 @@ public class login extends AppCompatActivity {
     }
     private void login() {
 
-        mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(login.this, new OnCompleteListener<AuthResult>() {
+        mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(Task<AuthResult> task) {
                 if(task.isSuccessful()){
 
-                    Intent intent = new Intent(login.this,MainActivity.class);
+                    Intent intent = new Intent(Login.this,MainActivity.class);
                     startActivity(intent);
                     finish();
 

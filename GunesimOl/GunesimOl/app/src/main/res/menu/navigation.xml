@@ -17,9 +17,9 @@
         android:title="@string/title_socialstory" />
 
     <item
-        android:id="@+id/navigation_video"
-        android:icon="@drawable/video"
-        android:title="@string/title_video" />
+        android:id="@+id/navigation_uzman"
+        android:icon="@drawable/mail"
+        android:title="@string/title_uzman" />
 
 
 </menu>

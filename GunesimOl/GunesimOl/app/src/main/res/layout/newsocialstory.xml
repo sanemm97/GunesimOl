@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
 
     >
     <TableLayout
@@ -49,10 +50,13 @@
                 android:text="Görsel Seçiniz : " />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/textView12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="" />
+                android:text="*"
+                android:textColor="#FF0000"
+                android:textStyle="bold"/>
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -154,6 +158,34 @@
                 android:inputType="textMultiLine"
                 android:lines="3"
                 android:maxLines="3"
+                android:ems="12"
+                android:scrollHorizontally="false"
+                android:scrollbars="vertical"
+                />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Beceri: " />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="*"
+                android:textColor="#FF0000"
+                android:textStyle="bold"/>
+
+            <EditText
+                android:id="@+id/edtt_social_target"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Hikayenizde çocuğunuza kazandırmak istediğiniz beceriyi yazınız"
+                android:inputType="textMultiLine"
+                android:lines="3"
+                android:maxLines="3"
                 android:scrollHorizontally="false"
                 android:scrollbars="vertical"
                 android:ems="12"
@@ -170,4 +202,4 @@
                 android:textColor="@drawable/button_text_color"/>
         </TableRow>
     </TableLayout>
-</RelativeLayout>
+</ScrollView>

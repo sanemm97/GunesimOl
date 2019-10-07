@@ -23,7 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class socialstories extends Fragment {
+public class Socialstories extends Fragment {
     private RecyclerView recycler_view;
     private List<Story> storyList;
     LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
@@ -45,7 +45,7 @@ public class socialstories extends Fragment {
         recycler_view.setLayoutManager(layoutManager);
         storyList = new ArrayList<Story>();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        myRef.child("socialstories").child(userid).addValueEventListener(new ValueEventListener() {
+        myRef.child("Socialstories").child(userid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -54,14 +54,14 @@ public class socialstories extends Fragment {
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     storiesFirebase = postSnapshot.getValue(StoriesFirebase.class);
 
-                            storyList.add(new Story(R.drawable.story, storiesFirebase.storyDate,storiesFirebase.storyTittle ));
+                            storyList.add(new Story(R.drawable.story, storiesFirebase.storyDate,storiesFirebase.storyTittle,storiesFirebase.storyId ));
 
 
                 }
-                final RecyclerViewAdapter adapter_items = new RecyclerViewAdapter(getActivity().getApplicationContext(),storyList, new ItemClickListener() {
+                final RecyclerViewAdapter adapter_items = new RecyclerViewAdapter(getActivity().getApplicationContext(),storyList,getActivity() ,new ItemClickListener() {
                     @Override
                     public void onItemClick(View v, int position) {
-                       // hikayeyiGonder();
+
 
                     }
                 });

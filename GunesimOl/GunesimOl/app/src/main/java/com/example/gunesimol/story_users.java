@@ -1,9 +1,9 @@
 package com.example.gunesimol;
 
-public class story_users {
+public class Story_users {
     private String userId;
     private String storyId;
-    public story_users(){
+    public Story_users(){
 
     }
 
@@ -25,7 +25,7 @@ public class story_users {
     }
 
 
-    public story_users(String userId, String storyId){
+    public Story_users(String userId, String storyId){
 
         this.userId = userId;
         this.storyId = storyId;

@@ -1,12 +1,8 @@
 package com.example.gunesimol;
 
-import android.net.Uri;
-
-import java.util.ArrayList;
-
 public class Story {
     private int imageID;
-    private String tittle, date;
+    private String tittle, date,storyId;
 
     public int getImageID() {
         return this.imageID;
@@ -19,9 +15,13 @@ public class Story {
     public String getDate() {
         return this.date;
     }
+    public String getStoryId() {
+        return this.storyId;
+    }
 
-    public Story(int imageID, String tittle, String date)
+    public Story(int imageID, String tittle, String date, String storyId)
     {
+        this.storyId=storyId;
         this.imageID = imageID;
         this.tittle = tittle;
         this.date = date;

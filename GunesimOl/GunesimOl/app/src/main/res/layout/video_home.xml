@@ -1,13 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000">
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/colorPrimaryDark"
+    >
+    <Button
+        android:id="@+id/video1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Video" />
+        android:background="@drawable/custom_button"
+        android:textColor="@drawable/button_text_color"
+        android:text="Sosyal Öykü Nedir? Nerelerde Kullanılır?"
+        android:layout_gravity="center"
+        android:layout_marginBottom="15dp"
+        />
+    <Button
+        android:id="@+id/video2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/custom_button"
+        android:textColor="@drawable/button_text_color"
+        android:text="Sosyal Öykü Yazmak İçin Kullanılan Cümle Çeşitleri Nelerdir?"
+        android:layout_gravity="center"
+        android:layout_marginBottom="15dp"
+        />
+    <Button
+        android:id="@+id/video3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/custom_button"
+        android:textColor="@drawable/button_text_color"
+        android:text="Sosyal Öykü Nasıl Yazılır?"
+        android:layout_gravity="center"
+        android:layout_marginBottom="15dp"
+        />
+    <Button
+        android:id="@+id/video4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/custom_button"
+        android:textColor="@drawable/button_text_color"
+        android:text="Sosyal Öykü Ne Zaman Geri Çekilir?"
+        android:layout_gravity="center"
+        />
 
-</RelativeLayout>
+</LinearLayout>

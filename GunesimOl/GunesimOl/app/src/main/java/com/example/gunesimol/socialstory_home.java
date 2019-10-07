@@ -9,14 +9,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-public class socialstory_home extends Fragment {
-    Button btn_newsocialstory,btn_socialstory_recordings;
+public class Socialstory_home extends Fragment {
+    Button btn_newsocialstory,btn_socialstory_recordings, btn_socialstory_videos;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.socialstory_home,container,false);
         btn_newsocialstory=view.findViewById(R.id.btn_newsocialstory);
         btn_socialstory_recordings=view.findViewById(R.id.btn_socialstory_recordings);
+        btn_socialstory_videos=view.findViewById(R.id.btn_socialstory_videos);
+        btn_socialstory_videos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openVideos();
+            }
+
+            private void openVideos() {
+                MyListener listener= (MyListener) getActivity();
+                listener.openVideos();
+            }
+        });
         btn_socialstory_recordings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

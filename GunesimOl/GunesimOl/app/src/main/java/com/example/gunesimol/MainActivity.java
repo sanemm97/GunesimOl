@@ -8,13 +8,16 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.storage.FirebaseStorage;
 
-public class MainActivity extends AppCompatActivity implements MyListener{
+public class MainActivity extends AppCompatActivity implements MyListener {
+    Intent veri_gonder = new Intent();
     Intent intent=new Intent();
 String story_tittle, story_giris,story_gelisme, story_sonuc;
     static String storyid;
 FragmentManager manager;
+    private FirebaseAuth auth;
 private FirebaseStorage fStorage;
 private Uri filePath;
 
@@ -27,22 +30,23 @@ private Uri filePath;
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     getSupportActionBar().setTitle("Anasayfa");
-                    getSupportFragmentManager().beginTransaction().replace(R.id.blank_layout,new home()).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.blank_layout,new Home()).commit();
                     return true;
                 case R.id.navigation_pecs:
                     getSupportActionBar().setTitle("Pecs İletişim Sistemi");
-                    getSupportFragmentManager().beginTransaction().replace(R.id.blank_layout,new pecs_home()).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.blank_layout,new Pecs_home()).commit();
 
 
                     return true;
                 case R.id.navigation_socialstory:
                     getSupportActionBar().setTitle("Sosyal Öyküler");
-                    getSupportFragmentManager().beginTransaction().replace(R.id.blank_layout,new socialstory_home()).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.blank_layout,new Socialstory_home()).commit();
                     return true;
-                case R.id.navigation_video:
-                    getSupportActionBar().setTitle("Beceri Video Havuzu");
-                    getSupportFragmentManager().beginTransaction().replace(R.id.blank_layout,new video_home()).commit();
+                case R.id.navigation_uzman:
+                    intent.setClass(getApplicationContext(), UzmanDestegi.class);
+                    startActivity(intent);
                     return true;
+
             }
             return true;
         }
@@ -55,9 +59,9 @@ private Uri filePath;
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        auth = FirebaseAuth.getInstance();
         if(savedInstanceState == null){
-            getSupportFragmentManager().beginTransaction().replace(R.id.blank_layout,new home()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.blank_layout,new Home()).commit();
             getSupportActionBar().setTitle("Ana Sayfa");
         }
 
@@ -65,52 +69,58 @@ private Uri filePath;
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
-    @Override
-    public void saveDataStory(String tittle, String giris, String gelisme, String sonuc, Uri image) {
-        getSupportActionBar().setTitle("Sosyal Öyküler");
-        story_tittle=tittle;
-        story_giris=giris;
-        story_gelisme=gelisme;
-        story_sonuc=sonuc;
-        filePath=image;
-       // getSupportFragmentManager().beginTransaction().replace(R.id.blank_layout,new socialstory_form()).commit();
 
-    }
 
     @Override
-    public void saveStory(boolean deger) {
-        if(deger)
-        {
+    public void ShowStory(String story_id, String tittle) {
+        intent.setClass(getApplicationContext(), ShowStory.class);
+        intent.putExtra("story_id",story_id);
+        startActivity(intent);
 
-
-
-        }
-        else {
-
-            /*newsocialstory newsocialstory=new newsocialstory();
-           /* socialstory_home.setDataActivity(story_tittle,story_giris,story_gelisme,story_sonuc);
-            Bundle bundle=new Bundle();
-            bundle.putString("story_tittle",story_tittle);
-            newsocialstory.setArguments(bundle);
-
-            Toast.makeText(this, "Lütfen hikayenizi belirtilen maddelere göre düzenleyiniz.", Toast.LENGTH_LONG).show();
-            getSupportFragmentManager().beginTransaction().replace(R.id.blank_layout,new newsocialstory()).commit();
-            verilerin aynen geri gitmesi */
-        }
     }
 
     @Override
     public void newStory() {
         getSupportActionBar().setTitle("Yeni Sosyal Öykü Oluştur");
-        intent.setClass(getApplicationContext(), NewSocialStory.class);
+        intent.setClass(getApplicationContext(),NewSocialStory.class);
+        startActivity(intent);
+
+
+    }
+
+    @Override
+    public void openVideos() {
+        getSupportActionBar().setTitle("Sosyal Öykü Eğitim Seti");
+        intent.setClass(getApplicationContext(),Video_home.class);
         startActivity(intent);
 
     }
+
     public void openSocialStories()
     {
         getSupportActionBar().setTitle("Sosyal Öykülerim");
-        getSupportFragmentManager().beginTransaction().replace(R.id.blank_layout,new socialstories()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.blank_layout,new Socialstories()).commit();
     }
+
+    @Override
+    public void signOut() {
+        auth.signOut();
+        intent.setClass(getApplicationContext(), Login.class);
+        startActivity(intent);
+        finish();
+
+
+    }
+
+    @Override
+    public void otizmNedir() {
+        getSupportActionBar().setTitle("Otizm Spekturum Bozukluğu Nedir?");
+        veri_gonder.setClass(getApplicationContext(),WebGoruntuleme.class);
+        veri_gonder.putExtra("adres","https://orgm.meb.gov.tr/alt_sayfalar/otistik_cocuklar_egt_prg.html");
+        startActivity(veri_gonder);
+
+    }
+
 
 
 

@@ -3,11 +3,60 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_gravity="center"
+            android:src="@drawable/gunesimol_logo"
+            android:layout_width="200dp"
+            android:layout_height="200dp" />
+            <TextView
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hoşgeldiniz..."
+                android:textSize="20dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="40dp"
+                android:gravity="center"
+                >
+                <TextView
 
+                    android:text="Hazırladığınız toplam sosyal öykü sayısı:"
+                    android:lines="3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"/>
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Anasayfa" />
+                <TextView
+                    android:id="@+id/sosyaloyku_sayisi"
+                    android:layout_gravity="top"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp" />
+
+            </LinearLayout>
+            <Button
+                android:id="@+id/btn_otizm"
+                android:text="Otizm Spekturum Bozukluğu Nedir?"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/btn_signOut"
+                android:text="Oturumu Kapat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+    </LinearLayout>
+    </ScrollView>
+
 </RelativeLayout>

@@ -1,20 +1,18 @@
 package com.example.gunesimol;
 
-import java.util.Date;
-
-public class stories {
+public class Stories {
     private String storyId;
     private  String storyTittle;
     private String storyInput;
     private String storyDevelopment;
     private String storyResult;
-    private String storyDate, storyClock;
-    public stories(){
+    private String storyDate, storyClock,storyTarget;
+    public Stories(){
 
 
     }
 
-    public stories(String storyId,String storyTittle ,String storyInput, String storyDevelopment, String storyResult, String storyDate, String storyClock) {
+    public Stories(String storyId, String storyTittle , String storyInput, String storyDevelopment, String storyResult, String storyTarget , String storyDate, String storyClock) {
         this.storyId = storyId;
         this.storyTittle=storyTittle;
         this.storyInput = storyInput;
@@ -22,6 +20,7 @@ public class stories {
         this.storyResult = storyResult;
         this.storyDate= storyDate;
         this.storyClock=storyClock;
+        this.storyTarget=storyTarget;
     }
 
 
@@ -59,6 +58,13 @@ public class stories {
 
     public void setStoryResult(String storyResult) {
         this.storyResult = storyResult;
+    }
+    public String getstoryTarget() {
+        return storyTarget ;
+    }
+
+    public void setStoryTarget(String storyTarget) {
+        this.storyTarget = storyTarget;
     }
     public String getStoryDate() {
         return storyDate;

@@ -4,7 +4,7 @@
     <string name="title_pecs">Pecs İletişim Sistemi</string>
     <string name="title_socialstory">Sosyal Öykü</string>
     <string name="title_diet">Diyet Programı</string>
-    <string name="title_video">Beceri Video Havuzu</string>
+    <string name="title_uzman">Uzman Desteği</string>
     <string name="login_email">Email Adresinizi Giriniz</string>
     <string name="login_sifre">Şifrenizi Giriniz</string>
     <string name="social_story_form_q1">Öykünüz ne, nerede, nasıl, neden, ne zaman, kim sorularına yanıt veriyor mu?</string>
@@ -15,4 +15,6 @@
     <string name="social_story_form_q6">Öykünüz çocuğunuzun anlayacağı açıklıkta yazılmış mı?</string>
     <string name="social_story_form_q7">Öykünüzün anlaşılması için görsel olarak kullandığınız resim vb.nin öykünüzün içeriğine uygun mu?</string>
     <string name="social_story_form_q8">Öykünüzde verilen örnekler çocuğunuzun gelişim düzeyine uygun mu?</string>
+    <string name="social_story_audio">Hikayeniz için kaydettiğiniz sesi seçiniz(Eğer hikayenize seslendirme yaptıysanız) : </string>
+
 </resources>

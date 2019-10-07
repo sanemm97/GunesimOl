@@ -1,13 +1,13 @@
 package com.example.gunesimol;
 
-import android.net.Uri;
-
 public interface MyListener {
-     void saveDataStory(String tittle, String giris, String gelisme, String sonuc, Uri image);
-     void saveStory(boolean deger);
+
+
+     void ShowStory(String story_id,String tittle);
      void newStory();
-
+     void openVideos();
     void openSocialStories();
+    void signOut();
+    void otizmNedir();
 
-    
 }

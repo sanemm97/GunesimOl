@@ -1,12 +1,12 @@
 package com.example.gunesimol;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -21,8 +21,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -35,11 +33,12 @@ public class SocialStoryForm extends AppCompatActivity {
     private FirebaseStorage fStorage;
     private Uri filePath;
     ImageView resimm;
-    String story_tittle, story_giris,story_gelisme, story_sonuc;
+    String story_tittle, story_giris,story_gelisme, story_sonuc,story_hedef;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setTitle("Yeni Sosyal Öykü");
         resimm=findViewById(R.id.resimm);
         setContentView(R.layout.socialstory_form);
         s1=findViewById(R.id.socialstory_q1);
@@ -50,20 +49,14 @@ public class SocialStoryForm extends AppCompatActivity {
         s6=findViewById(R.id.socialstory_q6);
         s7=findViewById(R.id.socialstory_q7);
         s8=findViewById(R.id.socialstory_q8);
-
-        /*   veri_gonder.putExtra("image",filePath);
-                    veri_gonder.putExtra("tittle", tittle);
-                    veri_gonder.putExtra("giris",giris);
-                    veri_gonder.putExtra("gelisme",gelisme);
-                    veri_gonder.putExtra("sonuc",sonuc);*/
-
-        /*Bundle veri_al = getIntent().getExtras();*/
-
-        /*story_tittle = veri_al.getString("tittle");
+        Bundle veri_al = getIntent().getExtras();
+        story_tittle = veri_al.getString("tittle");
         story_giris=veri_al.getString("giris");
         story_gelisme=veri_al.getString("gelisme");
         story_sonuc=veri_al.getString("sonuc");
-        filePath=getIntent().getData();*/
+        story_sonuc=veri_al.getString("sonuc");
+        story_hedef=veri_al.getString("hedef");
+        //filePath=getIntent().getData();
         socialstorySave=findViewById(R.id.btn_socialstory_save);
         socialstorySave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,18 +64,17 @@ public class SocialStoryForm extends AppCompatActivity {
                 if(s1.isChecked() && s2.isChecked()&& s3.isChecked() && s4.isChecked() && s5.isChecked() && s6.isChecked() && s7.isChecked() && s8.isChecked())
                 {
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
                     final String userid = user.getUid();
-                    DatabaseReference databaseReferenceStories= FirebaseDatabase.getInstance().getReference("socialstories").child(userid);
+                    DatabaseReference databaseReferenceStories= FirebaseDatabase.getInstance().getReference("Socialstories").child(userid);
                     storyid = databaseReferenceStories.push().getKey();
                     Date date=new Date();
                     SimpleDateFormat today=new SimpleDateFormat("dd/MM/yyyy");
                     SimpleDateFormat time=new SimpleDateFormat("HH:mm");
-                    stories stories=new stories(storyid,story_tittle,story_giris,story_gelisme,story_sonuc,today.format(date),time.format(date));
+                    Stories stories=new Stories(storyid,story_tittle,story_giris,story_gelisme,story_sonuc,story_hedef,today.format(date),time.format(date));
                     databaseReferenceStories.child(storyid).setValue(stories).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
-                            fStorage = FirebaseStorage.getInstance();
+                            /*fStorage = FirebaseStorage.getInstance();
                             StorageReference storageRef = fStorage.getReference().child("storyPhotos").child(userid).child(MainActivity.storyid);
                             storageRef.putFile(filePath).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                                 @Override
@@ -92,9 +84,10 @@ public class SocialStoryForm extends AppCompatActivity {
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
+
                                     Toast.makeText(getBaseContext(),"Sosyal öykünüz kaydedilmedi",Toast.LENGTH_LONG).show();
                                 }
-                            });
+                            });*/
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
@@ -105,21 +98,19 @@ public class SocialStoryForm extends AppCompatActivity {
                 }
                 else
                 {
-                   // MyListener listener= (MyListener) getActivity();
-                   // listener.saveStory(false);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(SocialStoryForm.this);
+                    builder.setTitle("Uyarı");
+                    builder.setMessage("Lütfen sosyal öykünüzü yukarıda belirtilen maddelere göre yeniden düzenleyiniz.");
+                    builder.setPositiveButton("Tamam", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    SocialStoryForm.super.onBackPressed();
+                                }
+                            });
+                            builder.show();
                 }
             }
+
         });
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Bundle extras = getIntent().getExtras();
-        byte[] byteArray = extras.getByteArray("resim");
-
-        Bitmap bitMap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
-
-        resimm.setImageBitmap(bitMap);
-    }
+}
 }

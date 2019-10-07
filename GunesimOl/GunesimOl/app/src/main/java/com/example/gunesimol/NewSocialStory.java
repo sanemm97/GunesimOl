@@ -1,7 +1,5 @@
 package com.example.gunesimol;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,16 +13,19 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
-import java.io.ByteArrayOutputStream;
-
 public class NewSocialStory extends AppCompatActivity {
+
+
     Button btn_next,btn_SocialPictureLoad;
-    EditText edtt_social_tittle,edtt_social_giris,edtt_social_gelisme,edtt_social_sonuc;
-    String tittle, giris, gelisme, sonuc;
+    EditText edtt_social_tittle,edtt_social_giris,edtt_social_gelisme,edtt_social_sonuc,edtt_social_target;
+    String tittle, giris, gelisme, sonuc,hedef;
     TextView image;
     ImageView story_image;
+    String kayit_yeri;
     private static final int PICK_IMAGE_REQUEST = 123;
     private Uri filePath;
+    public static final int RECORD_AUDIO = 0;
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -41,10 +42,10 @@ public class NewSocialStory extends AppCompatActivity {
         }
     }
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setTitle("Yeni Sosyal Öykü");
         setContentView(R.layout.newsocialstory);
         btn_next=findViewById(R.id.btn_social_next);
         image=findViewById(R.id.image);
@@ -52,9 +53,11 @@ public class NewSocialStory extends AppCompatActivity {
         edtt_social_giris=findViewById(R.id.edtt_social_giris);
         edtt_social_gelisme=findViewById(R.id.edtt_social_gelisme);
         edtt_social_sonuc=findViewById(R.id.edtt_social_sonuc);
+        edtt_social_target=findViewById(R.id.edtt_social_target);
         story_image=findViewById(R.id.story_image);
         btn_SocialPictureLoad=findViewById(R.id.btn_SocialPictureLoad);
-        final Intent veri_gonder = new Intent(this, MainActivity.class);
+
+        final Intent veri_gonder = new Intent(this, SocialStoryForm.class);
         btn_SocialPictureLoad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,21 +74,23 @@ public class NewSocialStory extends AppCompatActivity {
                 giris=edtt_social_giris.getText().toString();
                 gelisme=edtt_social_gelisme.getText().toString();
                 sonuc=edtt_social_sonuc.getText().toString();
-                //tittle.isEmpty() || giris.isEmpty() || gelisme.isEmpty() || sonuc.isEmpty() || filePath==null
-                if(filePath==null)
+                hedef=edtt_social_target.getText().toString();
+                if(tittle.isEmpty() || giris.isEmpty() || gelisme.isEmpty() || sonuc.isEmpty() || filePath==null || hedef.isEmpty())
                 {
                     Toast.makeText(getBaseContext(), "Lütfen zorunlu alanları doldurunuz", Toast.LENGTH_LONG).show();
                 }
                 else
                 {
+                    /*SocialStoryForm socialStoryForm=new SocialStoryForm();
+                    socialStoryForm.SaveStory(filePath);*/
 
-                    Bitmap bmp =  ((BitmapDrawable) story_image.getDrawable()).getBitmap();
+                    /*Bitmap bmp =  ((BitmapDrawable) story_image.getDrawable()).getBitmap();
                     ByteArrayOutputStream stream = new ByteArrayOutputStream();
                     bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
                     byte[] byteArray = stream.toByteArray();
                     Intent intent = new Intent(getApplicationContext(), SocialStoryForm.class);
                     intent.putExtra("resim", byteArray);
-                    startActivity(intent);
+                    startActivity(intent);*/
                    // Intent intent = new Intent(getApplicationContext(), SocialStoryForm.class);
 
 //passes the file path string with the intent
@@ -98,13 +103,13 @@ public class NewSocialStory extends AppCompatActivity {
                     /* Tüm alanlar doldurulduysa verileri daha sonra geri dönüldüğünde kullanılmak
                      üzere açılacak bir sonraki Activty'e gönderiyoruz */
 
-                    /*listener.saveDataStory(tittle,giris,gelisme,sonuc,filePath);
                     veri_gonder.putExtra("image",filePath);
                     veri_gonder.putExtra("tittle", tittle);
                     veri_gonder.putExtra("giris",giris);
                     veri_gonder.putExtra("gelisme",gelisme);
                     veri_gonder.putExtra("sonuc",sonuc);
-                    startActivity(veri_gonder);*/
+                    veri_gonder.putExtra("hedef",hedef);
+                    startActivity(veri_gonder);
                 }
             }
         });

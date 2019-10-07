@@ -1,17 +1,23 @@
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark">
+    <LinearLayout
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
     android:layout_gravity="center"
     android:orientation="vertical"
     >
+
         <Button
             android:id="@+id/btn_newsocialstory"
             android:layout_width="100dip"
             android:layout_height="100dip"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="45dp"
+            android:layout_marginTop="25dp"
             android:background="@drawable/circle_button" />
 
     <TextView
@@ -33,5 +39,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sosyal Öykülerim" />
+    <Button
+        android:id="@+id/btn_socialstory_videos"
+        android:layout_width="100dip"
+        android:layout_height="100dip"
+        android:layout_below="@+id/btn_socialstory_recordings"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="45dp"
+        android:background="@drawable/circle2_button" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sosyal öykü Eğitim Seti" />
 
 </LinearLayout>
+</ScrollView>

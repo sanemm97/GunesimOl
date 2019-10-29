@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/beceri_resim"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="center"
+        android:layout_gravity="center"
+        android:src="@drawable/beceri1" />
+    <Button
+        android:id="@+id/beceri_ileri"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/custom_button"
+        android:textColor="@drawable/button_text_color"
+        android:text=">>>"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_gravity="right"
+        />
+    <TextView
+        android:id="@+id/beceri_yazi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="center_horizontal|bottom"
+        android:padding="10dp"
+        android:text="@string/cizelge1"
+        android:background="#000000"
+        android:textColor="#ffff"
+         />
+
+</FrameLayout>
